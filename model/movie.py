@@ -11,6 +11,7 @@ class MovieModel:
         self.sinopse = params.sinopse
         self.rating = params.rating
         self.url_image = params.url_image
+        # self.cast = params.cast
 
     def to_dict(self):
         return {
@@ -19,6 +20,7 @@ class MovieModel:
             "sinopse": self.sinopse,
             "rating": self.rating,
             "url_image": self.url_image,
+            # "cast": self.cast,
         }
 
     @classmethod
@@ -32,6 +34,17 @@ class MovieModel:
             if movie.id == movie_id:
                 found_movie = movie
                 break
+        return found_movie
+
+    @classmethod
+    def find_movie_by_params(cls, params):
+        found_movie = list()
+        title = params.get("title")
+
+        for movie in cls._movie_list:
+            if title.upper() in movie.name.upper():
+                found_movie.append(movie)
+                # break
         return found_movie
 
     @classmethod

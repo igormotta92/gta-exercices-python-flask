@@ -1,6 +1,9 @@
 # version
 python --version
 
+# ini venv caso já exista
+.\_env\Scripts\Activate.ps1
+
 # Criar ambiente virtual de puton
 python -m venv [nome]
 

@@ -14,19 +14,21 @@ content-type: application/json
 ### USER RANKING  ###
 GET {{baseUrl}}/movies HTTP/1.1
 ###
-GET {{baseUrl}}/movies/1648085819953 HTTP/1.1
+GET {{baseUrl}}/movies/1648148261205 HTTP/1.1
 ###
-PUT {{baseUrl}}/movies/1648085819953 HTTP/1.1
+PUT {{baseUrl}}/movies/1648149149506 HTTP/1.1
 content-type: application/json
 
 {
     "name": "B14",
-    "sinopse": "Lorem Ipsum2",
+    "sinopse": "Lorem Ipsum",
     "rating": "10", 
-    "url_image": "http://aaaaaaa.com.brr"
+    "url_image": "http://aaaaaaa.com.br"
 }
 
-DELETE {{baseUrl}}/movies/XXXX HTTP/1.1
+###
+
+DELETE {{baseUrl}}/movies/1648149149506 HTTP/1.1
 
 
 # samuelLimaSantos

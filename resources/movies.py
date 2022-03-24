@@ -27,23 +27,21 @@ class Movie(Resource):
 
         params = body_arguments.parse_args()
 
-        params = body_arguments.parse_args()
         new_movie = MovieModel(params)
         MovieModel.add_movie(new_movie)
 
         return new_movie.to_dict()
 
-    def delete(self, id):
-
-        movie = MovieModel.find_post(id)
+    def delete(self, movie_id):
+        movie = MovieModel.find_movie(movie_id)
         if movie:
-            MovieModel.remove_post(movie)
+            MovieModel.remove_movie(movie)
             return movie.to_dict()
         return {"message": "Movie not found"}, 404
 
     def put(self, movie_id):
         movie = MovieModel.find_movie(movie_id)
-        
+
         if movie:
             body_arguments = reqparse.RequestParser()
             body_arguments.add_argument("name")
@@ -52,13 +50,11 @@ class Movie(Resource):
             body_arguments.add_argument("url_image")
 
             params = body_arguments.parse_args()
-
+            
             movie.name = params.name
             movie.sinopse = params.sinopse
             movie.rating = params.rating
             movie.url_image = params.url_image
-
-            # print(movie)
 
             return movie.to_dict()
 

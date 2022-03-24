@@ -1,0 +1,32 @@
+@baseUrl = http://localhost:5000
+
+### POST ###
+POST {{baseUrl}}/movies HTTP/1.1
+content-type: application/json
+
+{
+    "name": "B13",
+    "sinopse": "Lorem Ipsum",
+    "rating": "10", 
+    "url_image": "http://aaaaaaa.com.br"
+}
+
+### USER RANKING  ###
+GET {{baseUrl}}/movies HTTP/1.1
+###
+GET {{baseUrl}}/movies/1648085819953 HTTP/1.1
+###
+PUT {{baseUrl}}/movies/1648085819953 HTTP/1.1
+content-type: application/json
+
+{
+    "name": "B14",
+    "sinopse": "Lorem Ipsum2",
+    "rating": "10", 
+    "url_image": "http://aaaaaaa.com.brr"
+}
+
+DELETE {{baseUrl}}/movies/XXXX HTTP/1.1
+
+
+# samuelLimaSantos

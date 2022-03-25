@@ -1,12 +1,10 @@
 import time
 from json import dumps, loads
 
-from model.comment_ex import CommentModel
-
+from model.comment import CommentModel
 
 class PostModel:
     _posts_list = list()
-
     def __init__(self, user_name, text) -> None:
         self.id = round(time.time() * 1000)
         self.user_name = user_name
@@ -21,11 +19,10 @@ class PostModel:
                 found_post = post
                 break
         return found_post
-
     @classmethod
     def add_post(cls, post):
         cls._posts_list.append(post)
-
+    
     @classmethod
     def list_to_dict(cls):
         return loads(dumps(cls._posts_list, default=PostModel.to_dict))
@@ -56,5 +53,7 @@ class PostModel:
             "id": self.id,
             "user_name": self.user_name,
             "text": self.text,
-            "comments": loads(dumps(self.comments, default=CommentModel.to_dict)),
+            "comments": loads(dumps(self.comments, default=CommentModel.to_dict))
         }
+
+    

@@ -6,13 +6,18 @@ content-type: application/json
 
 {
     "name": "B16",
-    "sinopse": "Lorem Ipsum",
+    "sinopse": "Lorem Ipsum XXXX Marlon",
     "rating": "10", 
-    "url_image": "http://aaaaaaa.com.br"
+    "url_image": "http://aaaaaaa.com.br",
+    "cast": ["João Paulo", "Igor Motta", "Samuel", "Natalie Guimaraes"]
 }
 
 ### USER RANKING  ###
-GET {{baseUrl}}/movies?title=b HTTP/1.1
+GET {{baseUrl}}/movies HTTP/1.1
+###
+GET {{baseUrl}}/movies?title=B16 HTTP/1.1
+###
+GET {{baseUrl}}/movies?actor=Igor HTTP/1.1
 ###
 GET {{baseUrl}}/movies/1648162481445 HTTP/1.1
 ###

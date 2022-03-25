@@ -1,8 +1,6 @@
 from json import dumps, loads
-
 from flask_restful import Resource, reqparse
-from model.post_ex import PostModel
-
+from model.post import PostModel
 
 class Post(Resource):
     def get(self, id=None):
@@ -23,7 +21,8 @@ class Post(Resource):
         new_post = PostModel(params["user_name"], params["text"])
         PostModel.add_post(new_post)
         return new_post.to_dict()
-
+        
+        
     def delete(self, id):
         found_post = PostModel.find_post(id)
         if found_post:

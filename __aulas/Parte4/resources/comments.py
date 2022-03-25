@@ -1,9 +1,8 @@
 from json import dumps, loads
-
 from flask_restful import Resource, reqparse
-from model.comment_ex import CommentModel
-from model.post_ex import PostModel
+from model.comment import CommentModel
 
+from model.post import PostModel
 
 class Comment(Resource):
     def get(self, post_id, comment_id=None):
@@ -18,7 +17,6 @@ class Comment(Resource):
                 return found_post.comments_to_dict()
         else:
             return {"message": "Post not found"}, 404
-
     def post(self, post_id):
         found_post = PostModel.find_post(post_id)
         if found_post:
@@ -31,7 +29,7 @@ class Comment(Resource):
             found_post.add_comment(new_comment)
             return new_comment.to_dict()
         else:
-            return {"message": "Post not found"}, 404
+            return {"message": "Post not found"}, 404 
 
     def delete(self, post_id, comment_id):
         found_post = PostModel.find_post(post_id)

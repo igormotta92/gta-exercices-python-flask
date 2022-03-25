@@ -1,7 +1,7 @@
 import time
 from json import dumps, loads
 
-from model.comment_ex import CommentModel
+from model.comment import CommentModel
 
 class PostModel:
     _posts_list = list()
@@ -53,7 +53,7 @@ class PostModel:
             "id": self.id,
             "user_name": self.user_name,
             "text": self.text,
-            "comments": loads(dumps(self.comments, default=CommentModel.to_dict))
+            "comments": self.comments_to_dict()
         }
 
     

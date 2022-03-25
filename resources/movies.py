@@ -2,7 +2,6 @@ from json import dumps, loads
 
 from flask_restful import Resource, reqparse
 from model.movie import MovieModel
-from model.post_ex import PostModel
 
 
 class Movie(Resource):
@@ -20,7 +19,7 @@ class Movie(Resource):
         # request.args
         parse = reqparse.RequestParser()
         parse.add_argument("title", type=str, location="args")
-        # parse.add_argument("actor", type=str, location="args")
+        parse.add_argument("actor", type=str, location="args")
         params = parse.parse_args()
         # print(params.title, params.actor)
 
@@ -41,7 +40,7 @@ class Movie(Resource):
         body_arguments.add_argument("sinopse")
         body_arguments.add_argument("rating")
         body_arguments.add_argument("url_image")
-        # body_arguments.add_argument("cast" action="append")
+        body_arguments.add_argument("cast", action="append")
         params = body_arguments.parse_args()
 
         new_movie = MovieModel(params)
@@ -65,6 +64,7 @@ class Movie(Resource):
             body_arguments.add_argument("sinopse")
             body_arguments.add_argument("rating")
             body_arguments.add_argument("url_image")
+            body_arguments.add_argument("cast", action="append")
 
             params = body_arguments.parse_args()
 
@@ -72,6 +72,9 @@ class Movie(Resource):
             movie.sinopse = params.sinopse
             movie.rating = params.rating
             movie.url_image = params.url_image
+            movie.cast = params.cast
+
+            MovieModel.edit_movie(movie)
 
             return movie.to_dict()
 
